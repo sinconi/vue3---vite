@@ -2,6 +2,8 @@
   import messageItem from './components/messageItem.vue'
   import messageItem2 from './components/messageItem2.vue'
   import blogPostItem from './components/blogPostItem.vue'
+  import card from './components/card.vue'
+
 
 
 
@@ -9,7 +11,8 @@
     components: {
       messageItem,
       messageItem2,
-      blogPostItem
+      blogPostItem,
+      card
     },
     data() {
       return {
@@ -67,7 +70,20 @@
 
   <div>
     <!-- 在組件上設置class相當於直接對此元件最外層添增class屬性 -->
-    <blogPostItem v-for="post in posts" :key="post.id" v-bind="post" class="blogLink"></blogPostItem>
+    <!-- <blogPostItem v-for="post in posts" :key="post.id" v-bind="post" class="blogLink"></blogPostItem> -->
+
+    <!-- slot -->
+    <card title="卡片">
+      <p>這是卡片內容</p>
+    </card>
+    <card #title>
+      <h2>這是卡卡</h2>
+    </card>
+    <card v-slot:content>
+      <p>這是卡片內容2</p>
+      <p>這是卡片內容2</p>
+      <p>這是卡片內容2</p>
+    </card>
   </div>
 
 </template>
