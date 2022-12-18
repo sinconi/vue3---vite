@@ -3,6 +3,7 @@
   import messageItem2 from './components/messageItem2.vue'
   import blogPostItem from './components/blogPostItem.vue'
   import card from './components/card.vue'
+  import blogPostItem2 from './components/blogPostItem2.vue'
 
 
 
@@ -12,7 +13,8 @@
       messageItem,
       messageItem2,
       blogPostItem,
-      card
+      card,
+      blogPostItem2
     },
     data() {
       return {
@@ -55,6 +57,12 @@
         ]
       }
     },
+    methods: {
+      handleDeletePost(id) {
+        this.posts = this.posts.filter((p) => p.id !== id);
+        console.log(this.post.id)
+      }
+    }
   }
 </script>
 
@@ -73,7 +81,7 @@
     <!-- <blogPostItem v-for="post in posts" :key="post.id" v-bind="post" class="blogLink"></blogPostItem> -->
 
     <!-- slot -->
-    <card title="卡片">
+    <!-- <card title="卡片">
       <p>這是卡片內容</p>
     </card>
     <card #title>
@@ -83,7 +91,12 @@
       <p>這是卡片內容2</p>
       <p>這是卡片內容2</p>
       <p>這是卡片內容2</p>
-    </card>
+    </card> -->
+
+
+    <!-- emit -->
+    <blogPostItem2 v-for="post in posts" :key="post.id" v-bind="post" @deletePost="handleDeletePost">
+    </blogPostItem2>
   </div>
 
 </template>
